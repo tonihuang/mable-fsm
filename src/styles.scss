@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    margin:0;
+    button{
+        background: #000;
+        color: #fff;
+        border:0;
+        opacity:1;
+        transition: opacity 0.5s;
+        padding: 0.5rem 1rem;
+
+        &.icon-button{
+            padding: 0.3rem 0.3rem;
+            min-width: 2rem;
+            min-height: 1.7rem;
+            font-weight: bold;
+        }
+
+        &.round{
+            border-radius:50%;
+            padding: 0.3rem 0.3rem;
+            min-width: 1rem;
+            min-height: 1rem;
+            
+        }
+
+        &:hover{
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.5s;
+        }
+
+        &.alt{
+            background: #efefef;
+            color: #333;
+            border: solid 1px #333;
+            
+        }
+
+    }
+    .input{
+        min-height:1.3rem;
+        &:focus,&:active,&:focus-visible {
+            outline:0;
+            border: orange solid 1px;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<div class="toolbar" role="banner">
+  <h2>Folder Structure Maker</h2>
+</div>
+
+<div class="content" role="main">
+  <div class="tree-container">
+    <button (click)="addFolderToRoot()">Add folder to root</button>
+    <folder-structure [items]="items" [parent]="-1" > </folder-structure>
+  </div>
+  <div class="json-output">
+    <h3>JSON</h3>
+    <textarea name="itemsJson" id="itemsJson" cols="80" rows="10">{{ items | json }}</textarea>
+  </div>
+</div>
+

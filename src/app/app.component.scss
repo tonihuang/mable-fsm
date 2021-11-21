@@ -1,0 +1,22 @@
+.toolbar{
+    color: #fff;
+    background: #000;
+    width:100%;
+    text-transform: uppercase;
+    text-align:center;
+    display:inline-block;
+    h2{
+        margin: 0.5em 0;
+    }
+}
+.content{
+    display:inline-block;
+    width:100%;
+    height:100%;
+    .tree-container{
+        padding: 1em;
+    }
+    .json-output{
+        padding: 1em;
+    }
+}

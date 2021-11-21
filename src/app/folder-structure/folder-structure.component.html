@@ -1,0 +1,30 @@
+<ul *ngFor = "let item of items; let i=index" [ngClass]="{'tree' : parent==-1}">
+    <li>
+        <div *ngIf="item?.name == ''; then newNodeBlock else existingNodeBlock"></div>
+        <ng-template #newNodeBlock>
+            <div class="display-panel" *ngIf="(parent!==-1 && newNodeType == 'unset' )">
+                <button (click)="setNewNodeType('file')" class="alt">File</button>
+                <button (click)="setNewNodeType('folder')" class="alt">Folder</button>
+            </div>
+            <div class="edit-panel" *ngIf="( parent==-1 || (parent!==-1 && newNodeType !== 'unset' ) )">
+                <img src="{{(newNodeType=='folder'?'/assets/images/folder-open-regular.svg':'/assets/images/file-regular.svg')}}" class="icon">
+                <input #inputNodeName type="text" class="input" [(ngModel)]="newNodeName">
+                <button class="icon-button" (click)="setNewNodeName(item.id,newNodeName)"><img src="/assets/images/check-bold.svg" class="icon"></button>
+                <button class="icon-button alt" (click)="deleteNode(item.id)"><img src="/assets/images/close-bold.svg" class="icon"></button>
+            </div>
+        </ng-template>
+        <ng-template #existingNodeBlock>
+            <div class="display-panel" *ngIf="( parent==-1 || (parent!==-1 && item?.type !== 'unset' ) )">
+                <div class="inner-container">
+                <img src="{{(item?.type=='folder'?'/assets/images/folder-open-regular.svg':'/assets/images/file-regular.svg')}}" class="icon">
+                <div>{{item.name}}</div>
+                <button class="icon-button round" [hidden]="item.type=='file'" ><img src="/assets/images/plus.svg" class="icon" (click)="addChild(item.id)"></button>
+                <button class="icon-button round"><img src="/assets/images/delete.svg" class="icon" (click)="deleteNode(item.id)"></button>
+                </div>
+            </div>
+            <folder-structure [items]="item.children" [parent]="+item.id" (childUpdated)="updateNode($event)"> </folder-structure>
+        </ng-template>
+
+        <!-- <app-recursive [recursiveList]="list.value"></app-recursive> -->
+    </li>
+</ul>
